@@ -1,0 +1,37 @@
+.gameName {
+    text-align: center;
+}
+
+#startButton {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.grid-item.correct {
+    background-color: green;
+}
+
+.grid-item.wrong {
+    background-color: red;
+}
