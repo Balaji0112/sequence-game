@@ -6,6 +6,9 @@
     text-align: center;
 }
 
+#initialText {
+    text-align: center;
+}
 #startButton {
     display: block;
     margin: 0 auto;
