@@ -1,6 +1,9 @@
 let gridSize = 3;
 let targetSequence = [];
-currentStep = 1
+let currentStep = 1;
+let life = 3;
+const lifeCount = document.getElementById('healthCount');
+
 function generateRandomSequence(length) {
     const sequence = [];
     for (let i = 1; i <= length; i++) {
@@ -30,8 +33,7 @@ function createGrid() {
 }
 
 function checkNumber(number) {
-    console.log(number)
-    console.log(targetSequence)
+    
     if (number === currentStep) {
         const gridItem = document.querySelector(`.grid-item:nth-child(${targetSequence.indexOf(number)+1})`);           
             gridItem.classList.add('correct');
@@ -43,19 +45,33 @@ function checkNumber(number) {
             }, 200);
             currentStep = 1
         }
-        else{
+        else {
             currentStep++;
-            }
         }
+    }
 
-    else{
+    else {
         const gridItem = document.querySelector(`.grid-item:nth-child(${targetSequence.indexOf(number)+1})`);
         gridItem.classList.add('wrong');
-        setTimeout(() => {
-            alert('Game over! You lost!');
-            startGame();
-        }, 500);
-        currentStep = 1
+
+        life = life - 1;
+        lifeCount.textContent = `Life: ${life}` 
+   
+        if(life === 0){
+            gridItem.classList.add('wrong');
+            
+            setTimeout(() => {
+                alert('Game over! You lost!');
+                startGame();
+                lifeCount.textContent = `Life: 3`
+            }, 500);
+        }
+        else{
+            setTimeout(() => {
+                alert(`Pick the correct number, You only have ${life} chances left`)
+                gridItem.classList.remove('wrong')
+            }, 1000)
+        }
     }
 }
 
