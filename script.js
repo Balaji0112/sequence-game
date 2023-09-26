@@ -40,6 +40,7 @@ function checkNumber(number) {
             
         if (currentStep === 9) {
             setTimeout(() => {
+                lifeCount.textContent = `Life: 3`
                 startGame();
                 alert('Congratulations! You won!')
             }, 200);
